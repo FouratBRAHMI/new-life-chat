@@ -1,0 +1,76 @@
+<ion-menu [content]="content">
+
+  <ion-content class="bg">
+    <div text-center padding>
+      <img style="width: 50%;" src="./assets/imgs/lifechat-logo.png" class="logo" />
+    </div>
+    <ion-item class="menu-item-xd" (click)="updateProfile()" menuClose no-lines>
+      <ion-icon name="ios-create-outline" item-start></ion-icon>
+      Modifier mes informations
+    </ion-item>
+    <ion-item class="menu-item-xd" (click)="contactUs()" menuClose no-lines>
+      <ion-icon name="ios-mail-outline" item-start></ion-icon>
+      Nous contacter
+    </ion-item>
+    <ion-item class="menu-item-xd" (click)="openCGU()" menuClose no-lines>
+      <ion-icon name="ios-book-outline" item-start></ion-icon>
+      C.G.U.
+    </ion-item>
+    <ion-item class="menu-item-xd" (click)="doLogout()" menuClose no-lines>
+      <ion-icon name="ios-log-out-outline" item-start></ion-icon>
+      Se déconnecter
+    </ion-item>
+  </ion-content>
+</ion-menu>
+
+<ion-content #content>
+
+  <div class="mini-header bg"><span>Profil</span></div>
+
+  <ion-grid no-padding>
+    <ion-row>
+      <ion-col col-auto>
+        <button ion-button icon-only menuToggle clear>
+          <ion-icon name="menu"></ion-icon>
+        </button>
+      </ion-col>
+      <ion-col>
+      
+      </ion-col>
+      <ion-col col-auto *ngIf="user.user?.role != 'pro'" (click)="gotoOffers()">
+        <button ion-button clear>
+          <img src="./assets/imgs/addmsg.png"  width=30 />
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <div *ngIf="user.user?.role == 'client'" text-center (click)="changeHumeur()" class="avatar" [ngStyle]="{'background-image':'url(./assets/imgs/humeur/'+profile?.humeur+'.png)'}">
+  </div>
+  <div *ngIf="user.user?.role == 'pro'" text-center class="avatar">
+  </div>
+  <h1  *ngIf="user.user?.role != 'pro'" text-center ion-text color="reverse">{{profile?.pseudo}}</h1>
+  <h1  *ngIf="user.user?.role == 'pro'" text-center ion-text color="reverse">{{profile?.nom}}</h1>
+
+  <div *ngIf="user.user?.role == 'pro'" text-left style="padding: 5px 10px;">
+    <h3>Notation</h3>
+    <p *ngIf="rates">{{calculateRate(rates)}}/5</p>
+  </div>
+
+  <div text-left  style="padding: 5px 10px;">
+    <h3>Ma philosophie</h3>
+    <p>« {{ profile?.philo }} »</p>
+  </div>
+
+  <div *ngIf="user.user?.role != 'pro'" text-left  style="padding: 5px 10px;">
+    <ion-badge color="secondary">{{ profile?.msgCount }}</ion-badge>
+    messages restants
+  </div>
+
+  <div *ngIf="user.user?.role == 'pro'" text-left  style="padding: 5px 10px;">
+    <ion-badge color="primary">{{ msgRecus }}</ion-badge>
+    messages reçus
+  </div>
+
+
+</ion-content>

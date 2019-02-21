@@ -1,0 +1,146 @@
+page-conversation {
+    .bullet {
+        display: inline-block;
+        padding: 8px;
+        border-radius: 4px;
+        font-size: 13px;
+        font-family: Lato, "Helvetica Neue", "Roboto", "Segoe UI", sans-serif;
+        line-height: 20px;
+        white-space: normal;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        width: 60%;
+        margin: 3% 0;
+        color: #fff;
+        background-color: map-get($colors, primary);
+        &.received {
+            float: left;
+        }
+        &.sent {
+            float: right;
+        }
+    }
+
+    ion-content {
+		ion-list {
+			margin: 0 !important;
+
+			fieldset {
+				border: none;
+				border-top: 0px solid #c8c7cc !important;
+				margin-top: 20px !important;
+				color: #888888;
+			}
+		}
+		
+
+		ion-avatar {
+			max-width: 32px;
+			margin-bottom: -24px;
+			align-items: flex-start;
+
+			.user-image
+			{
+				border-radius: 50%;
+			}
+		}
+
+		.message-text {
+			display: inline-block;
+			padding: 8px;
+			border-radius: 4px;
+			max-width: 180px;
+			font-size: 13px;
+			font-family: Lato, "Helvetica Neue", "Roboto", "Segoe UI", sans-serif;
+			line-height: 20px;
+			white-space: normal;
+			-webkit-box-sizing: border-box;
+			box-sizing: border-box;
+			min-width: 70px;
+
+			&.left {
+				background-color: #a0a0a0;
+				color: #fff;
+				float: left !important;
+				margin-left: 2px;
+				padding-top: 20px;
+			}
+
+			&.left:before {
+				position: absolute;
+				left: 10px;
+				content:'';
+				width: 0;
+				height: 0;
+				border-width: 7px 14px 7px 0;
+				border-style: solid;
+				border-color: transparent #a0a0a0 transparent;
+			}
+
+			&.right {
+				background-color: #4f5c82;
+				margin-right: 2px;
+				color: #fff;
+				float: right !important;
+				padding-top: 20px;
+			}
+
+			&.right:before {
+				position: absolute;
+				right: 10px;
+				content:'';
+				width: 0;
+				height: 0;
+				border-width: 7px 0 7px 14px;
+				border-style: solid;
+				border-color: transparent #4f5c82 transparent;
+			}
+		}
+
+		.message-time {
+			position: absolute;
+			margin-top: 4px;
+			color: #dddddd;
+    		right: 15px;;
+			padding-right: 12px;
+			font-size: 1rem;
+			vertical-align: middle;
+            text-transform: lowercase;
+		}
+
+		.message-time-left {
+			position: absolute;
+			margin-top: 4px;
+			color: #ffffff;
+			left: 25px;
+			padding-right: 12px;
+			font-size: 1rem;
+			vertical-align: middle;
+            text-transform: lowercase;
+		}
+
+	}
+    ion-footer {
+        .message-warning {
+            font-style: italic;
+            font-size: 10px !important;
+        }
+        .button-send {
+            border-radius: 0px;
+            margin: 0;
+        }
+        textarea {
+            padding: 0 8px !important;
+            padding-right: 0 !important;
+        }
+    }
+
+    span.header-subject-name {
+        font-size: x-small;
+    }
+    img.header-subject-img {
+        width: 35px;
+        height: 35px;
+    }
+
+}

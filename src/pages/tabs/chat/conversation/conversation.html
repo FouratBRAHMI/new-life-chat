@@ -1,0 +1,95 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-buttons left>
+      <button left ion-button icon-only (click)="cancel()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+
+    <ion-title *ngIf="conv?.subject">
+      <ion-grid>
+        <ion-row no-padding align-items-center justify-content-center>
+          <img class="header-subject-img" [src]="'./assets/imgs/sujets/'+ conv?.subject +'/'+ conv?.subject +'_vert.png'" />
+        </ion-row>
+        <ion-row no-padding align-items-center justify-content-center>
+          <span class="header-subject-name">{{ conv?.subject }}</span>
+        </ion-row>
+      </ion-grid>
+    </ion-title>
+
+    <ion-title *ngIf="subject">
+      <ion-grid>
+        <ion-row no-padding align-items-center justify-content-center>
+          <img class="header-subject-img" [src]="'./assets/imgs/sujets/'+ subject +'/'+ subject +'_vert.png'" />
+        </ion-row>
+        <ion-row no-padding align-items-center justify-content-center>
+          <span class="header-subject-name">{{ subject }}</span>
+        </ion-row>
+      </ion-grid>
+    </ion-title>
+
+    <ion-buttons end *ngIf="client.profile" (click)="(userP.user.role == 'client') ? openProfile(conv.pro): openProfile(conv.client)">
+      <button style="background-color:transparent">
+        <ion-row justify-content-center no-padding>
+          <ion-col style="padding:0px;">
+            <p *ngIf="userP.user.role == 'client'" style="color:white;">{{ client.profile.nom }}</p>
+            <p *ngIf="userP.user.role != 'client'" style="color:white;">{{ client.profile.pseudo }}</p>
+          </ion-col>
+          <ion-col style="padding:0px 5px;">
+            <ion-avatar item-start style="width: 40px;">
+              <img height="40px;" width="40px;" *ngIf="userP.user.role == 'client'" src="./assets/imgs/lifechat-logo.png">
+              <img height="40px;" width="40px;" *ngIf="userP.user.role != 'client'" [src]="'./assets/imgs/humeur/'+ client?.profile.humeur +'.png'">
+            </ion-avatar>
+          </ion-col>
+        </ion-row>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<!-- <ion-content padding> 
+  <div *ngFor="let message of conv?.messages" class="bullet" [ngClass]="{'sent':message.sender== userP.user?.role, 'received':message.sender!=userP.user?.role}">
+    <p>{{message.date | date:'yyyy-MM-dd hh:mm'}}</p>
+    <p>{{message.content}}</p>
+  </div>
+</ion-content> -->
+
+<ion-content class="messages">
+  <ion-list no-padding *ngIf="conv?.messages">
+    <div *ngFor="let message of conv?.messages; let i = index">
+      <ion-item no-lines>
+        <ion-label>
+          <p *ngIf="message.sender == userP.user?.role">
+            <span class="message-text right">{{message.content}}</span>
+            <span class="message-time">{{message.date | date:"hh:mm a"}}</span>
+          </p>
+          <p *ngIf="message.sender != userP.user?.role">
+            <span class="message-text left">{{message.content}}</span>
+            <span class="message-time-left">{{message.date | date:"hh:mm a"}}</span>
+          </p>
+        </ion-label>
+        {{message.content}}
+      </ion-item>
+    </div>
+  </ion-list>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar no-padding>
+    <ion-row>
+      <ion-col no-padding>
+        <ion-textarea type="text" [disabled]="conv?.closed" [(ngModel)]="newMessage" rows="2" [maxlength]="500" [placeholder]="'Rédigez votre message ...'"
+          class="message-input" auto-size autocapitalize="off" block></ion-textarea>
+      </ion-col>
+      <ion-col col-auto no-padding text-right>
+        <button ion-button (click)="send()" [disabled]="!newMessage || (newMessage && newMessage.length > textMaxLength)" color="secondary"
+          class="button-send" block>
+          Envoi
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-footer>

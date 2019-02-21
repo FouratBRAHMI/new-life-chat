@@ -1,0 +1,132 @@
+<!--
+  Generated template for the UpdateProfilePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Update Profile</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding class="bg">
+  <div *ngIf="me"> 
+    <div>
+      <ion-label color="light" text-left>Ma philosophie</ion-label>
+      <ion-item>
+        <ion-input type="text" [(ngModel)]="me.profile.philo" placeholder="Entrez votre philosophie"></ion-input>
+      </ion-item>
+    </div>
+
+    <div>
+      <ion-label color="light" text-left>Adresse E-mail</ion-label>
+      <ion-item>
+        <ion-input type="email" [(ngModel)]="me.profile.email" placeholder="Entrez votre email"></ion-input>
+      </ion-item>
+    </div>
+    
+    <div *ngIf="me.role=='pro'">
+      <ion-label color="light" text-left>Nom</ion-label>
+      <ion-item>
+        <ion-input [(ngModel)]="me.profile.nom" placeholder="Entrez votre nom"></ion-input>
+      </ion-item>
+    </div>
+    
+    <div *ngIf="me.role=='pro'">
+      <ion-label color="light" text-left>Prenom</ion-label>
+      <ion-item>
+        <ion-input [(ngModel)]="me.profile.prenom" placeholder="Entrez votre prenom"></ion-input>
+      </ion-item>
+    </div>
+    
+    <div *ngIf="me.role=='client'">
+      <ion-label color="light" text-left>Pseudo</ion-label>
+      <ion-item>
+        <ion-input [(ngModel)]="me.profile.pseudo" placeholder="Entrez votre pseudo"></ion-input>
+      </ion-item>
+    </div>
+
+    <div>
+      <ion-label color="light" text-left>Sexe</ion-label>
+      <ion-item text-center no-lines>
+        <ion-icon name="male" [color]="(me.profile.sexe=='male')?'secondary':'light'" margin-horizontal (click)="me.profile.sexe='male'"></ion-icon>
+        <ion-icon name="female" [color]="(me.profile.sexe=='female')?'secondary':'light'" margin-horizontal (click)="me.profile.sexe='female'"></ion-icon>
+        <ion-icon name="transgender" [color]="(me.profile.sexe=='other')?'secondary':'light'" margin-horizontal (click)="me.profile.sexe='other'"></ion-icon>
+      </ion-item>
+    </div>
+
+    <div>
+      <ion-label color="light" text-left>Age</ion-label>
+      <ion-item padding-horizontal>
+        <ion-icon name="calendar" color="reverse" item-start></ion-icon>
+        <ion-datetime [(ngModel)]="me.profile.birthday" displayFormat="DD/MM/YYYY" placeholder="JJ/MM/AAAA"></ion-datetime>
+      </ion-item>
+    </div>
+    
+    <div>
+      <ion-label color="light" text-left>Profession</ion-label>
+      <ion-item>
+        <ion-input [(ngModel)]="me.profile.profession" placeholder="Entrez votre profession"></ion-input>
+      </ion-item>
+    </div>
+
+    <div *ngIf="me.role=='pro'" class="fileuploader">
+      <ion-label color="light" text-left>Certificats</ion-label>
+      <ion-item no-lines>
+        <ion-input placeholder="Format: PDF, PNG, JPG..."></ion-input>
+        <div item-end>
+          <ion-icon name="help" color="light" (click)="openPopup('certif')"></ion-icon>
+        </div>
+      </ion-item>
+    </div>
+
+    <div *ngIf="me.role=='client'">
+      <ion-label color="light" text-left>Département</ion-label>
+      <ion-item>
+        <ion-input [(ngModel)]="me.profile.departement" placeholder="Entrez votre département"></ion-input>
+      </ion-item>
+    </div>
+
+    <div class="fileuploader" *ngIf="me.role=='pro'">
+      <ion-label color="light" text-left>Justificatif d'identité</ion-label>
+      <ion-item no-lines>
+        <ion-input placeholder="Format: PDF, PNG, JPG..."></ion-input>
+        <div item-end>
+          <ion-icon name="help" color="light" (click)="openPopup('justificatif')"></ion-icon>
+        </div>
+      </ion-item>
+    </div>
+    
+    <div *ngIf="me.role=='pro'">
+      <ion-label color="light" text-left>Numéro de téléphone</ion-label>
+      <ion-item>
+        <ion-input [(ngModel)]="me.profile.phone" placeholder="Entrez votre numéro de téléphone"></ion-input>
+      </ion-item>
+    </div>
+
+    <!--  user humeuur -->
+
+    <div *ngIf="me.role=='pro'" style="margin-top: 15px;">
+      <ion-row text-center>
+        <ion-col no-padding *ngFor="let sub of subjects" (click)="selectThisSubject(sub)">
+          <img *ngIf="!isSubjectSelected(sub)" class="subject-img" [src]="'./assets/imgs/sujets/'+sub+'/'+sub+'_bleu.png'" />
+          <img *ngIf="isSubjectSelected(sub)" class="subject-img" [src]="'./assets/imgs/sujets/'+sub+'/'+sub+'_vert.png'" />
+    
+          <p *ngIf="!isSubjectSelected(sub)" class="sujet-name">{{ sub }}</p>
+          <p *ngIf="isSubjectSelected(sub)" class="sujet-name vert">{{ sub }}</p>
+        </ion-col>
+      </ion-row>
+    </div>
+
+  </div>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar class="footer-toolbar">
+    <button color="primary" (click)="doUpdate()" secondary ion-button block>Enregistrer</button>
+  </ion-toolbar>
+</ion-footer>

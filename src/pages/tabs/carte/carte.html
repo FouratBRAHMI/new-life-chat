@@ -1,0 +1,18 @@
+
+<ion-content fullscreen>
+  <div class="mini-header bg"><span>Carte</span></div>
+  <ion-row text-center>
+    <ion-row text-center style="margin-top: 4px;">
+        <ion-col col-3></ion-col>
+        <ion-col no-padding col-2 *ngFor="let sub of subjects" (click)="selectThisSubject(sub)">
+          <img *ngIf="selectedSubject != sub" class="subject-img" [src]="'./assets/imgs/maps/'+sub+'/'+sub+'_bleu.png'" /> 
+          <img *ngIf="selectedSubject == sub" class="subject-img" [src]="'./assets/imgs/maps/'+sub+'/'+sub+'_vert.png'" /> 
+          
+          <p style="margin-top: 1px;" *ngIf="selectedSubject != sub" class="sujet-name">{{ subjectName(sub) }}</p>
+          <p style="margin-top: 1px;" *ngIf="selectedSubject == sub" class="sujet-name vert">{{ subjectName(sub) }}</p>
+        </ion-col>
+      </ion-row>
+  </ion-row>
+  <div #map id="map">
+  </div>
+</ion-content>

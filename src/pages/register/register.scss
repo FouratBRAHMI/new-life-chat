@@ -1,0 +1,83 @@
+page-register {
+    .registerform {
+        ion-item {
+            background-color: transparent;
+        }
+        >div>div {
+            margin-bottom: 15px;
+        }
+        ion-icon {
+            font-size: 30px;
+        }
+    }
+    div.swiper-pagination {
+        display: none;
+        top: 10px;
+        text-align: right;
+        bottom: inherit;
+        .swiper-pagination-bullet {
+            width: 15px;
+            height: 15px;
+            &.swiper-pagination-bullet-active {
+                background: map-get($colors, secondary);
+            }
+        }
+    }
+    ion-checkbox .item-cover {
+        display: none;
+    }
+    .logo {
+        width: 140px;
+        height: auto;
+        margin-bottom: 30px;
+    }
+    .swiper {
+        div.swiper-pagination {
+            display: block;
+        }
+    }
+    h3 {
+        position: absolute;
+        margin: 5px 10px;
+    }
+    ion-col {
+        p {
+            margin: 0;
+        }
+    }
+    .fileuploader {
+        & ion-input {
+            border: 1px solid map-get($colors, light);
+            margin: 0px 20px;
+        }
+        & [item-end] {
+            width: 30px;
+            height: 30px;
+            text-align: center;
+            background-color: grey;
+            border-radius: 50%;
+        }
+    }
+    .condition {
+        & ion-label {
+            white-space: normal;
+        }
+    }
+    ul {
+        list-style-type: none
+    }
+    .humeur {
+        ion-col{
+            padding: 10px !important;
+        }
+        p {
+            font-size: 4vw;
+        }
+        img{
+            padding: 6%;
+        }
+    }
+    .active{
+        background: map-get($colors, primary)
+    }
+}

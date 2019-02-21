@@ -1,0 +1,211 @@
+<ion-content class="bg">
+  <h3>
+    <ion-icon name="arrow-back" color="secondary" navPop></ion-icon>
+  </h3>
+  <ion-slides pager="true" [ngClass]="{'swiper':role}" padding-horizontal>
+    <ion-slide padding>
+      <img src="./assets/imgs/lifechat-logo.png" class="logo" />
+      <button ion-button large block [outline]="role=='client'" color="secondary" margin-vertical (click)="chooseRole('client')">
+        Utilisateur
+      </button>
+      <button ion-button large block [outline]="role=='pro'" color="secondary" margin-vertical (click)="chooseRole('pro')">
+        Conseiller
+      </button>
+    </ion-slide>
+    <ion-slide padding class="registerform">
+      <img src="./assets/imgs/lifechat-logo.png" class="logo" />
+
+      <div *ngIf="role=='client'">
+        <ion-label color="light" text-left>Email</ion-label>
+        <ion-item>
+          <ion-input type="email" [(ngModel)]="profile.email" placeholder="Entrez votre email"></ion-input>
+        </ion-item>
+      </div>
+
+      <div *ngIf="role=='pro'">
+        <ion-label color="light" text-left>Nom</ion-label>
+        <ion-item>
+          <ion-input [(ngModel)]="profile.nom" placeholder="Entrez votre nom"></ion-input>
+        </ion-item>
+      </div>
+
+      <div *ngIf="role=='pro'">
+        <ion-label color="light" text-left>Prenom</ion-label>
+        <ion-item>
+          <ion-input [(ngModel)]="profile.prenom" placeholder="Entrez votre prenom"></ion-input>
+        </ion-item>
+      </div>
+
+      <div *ngIf="role=='client'">
+        <ion-label color="light" text-left>Pseudo</ion-label>
+        <ion-item>
+          <ion-input [(ngModel)]="profile.pseudo" placeholder="Entrez votre pseudo"></ion-input>
+        </ion-item>
+      </div>
+
+      <div>
+        <ion-label color="light" text-left>Mot de passe</ion-label>
+        <ion-item>
+          <ion-input type="password" [(ngModel)]="password" placeholder="Entrez votre mot de passe"></ion-input>
+        </ion-item>
+      </div>
+
+      <div>
+        <ion-label color="light" text-left>Confirmation mot de passe</ion-label>
+        <ion-item>
+          <ion-input type="password" placeholder="Entrez votre mot de passe"></ion-input>
+        </ion-item>
+      </div>
+
+    </ion-slide>
+    <ion-slide padding class="registerform">
+      <img src="./assets/imgs/lifechat-logo.png" class="logo" />
+
+      <div>
+        <ion-label color="light" text-left>Sexe</ion-label>
+        <ion-item text-center no-lines>
+          <ion-icon name="male" [color]="(profile.sexe=='male')?'secondary':'light'" margin-horizontal (click)="profile.sexe='male'"></ion-icon>
+          <ion-icon name="female" [color]="(profile.sexe=='female')?'secondary':'light'" margin-horizontal (click)="profile.sexe='female'"></ion-icon>
+          <ion-icon name="transgender" [color]="(profile.sexe=='other')?'secondary':'light'" margin-horizontal (click)="profile.sexe='other'"></ion-icon>
+        </ion-item>
+      </div>
+
+      <div>
+        <ion-label color="light" text-left>Age</ion-label>
+        <ion-item padding-horizontal>
+          <ion-icon name="calendar" color="reverse" item-start></ion-icon>
+          <ion-datetime [(ngModel)]="profile.birthday" displayFormat="DD/MM/YYYY" placeholder="JJ/MM/AAAA"></ion-datetime>
+        </ion-item>
+      </div>
+
+      <div>
+        <ion-label color="light" text-left>Profession</ion-label>
+        <ion-item>
+          <ion-select *ngIf="role=='client'" [(ngModel)]="profile.profession">
+            <ion-option *ngFor="let classe of classes" [value]="classe">{{classe}}</ion-option>
+          </ion-select>
+          <ion-select *ngIf="role=='pro'" [(ngModel)]="profile.profession">
+            <ion-option *ngFor="let classe of professionPro" [value]="classe">{{classe}}</ion-option>
+          </ion-select>
+        </ion-item>
+      </div>
+
+      <div *ngIf="role=='pro'" class="fileuploader">
+        <ion-label color="light" text-left>Certificats</ion-label>
+        <ion-item no-lines>
+          <ion-input (click)="onInputClick('certif')" placeholder="Upload d'image" disabled [ngClass]="{'active':file.certif}"></ion-input>
+          <div item-end>
+            <ion-icon name="help" color="light" (click)="openPopup('certif')"></ion-icon>
+          </div>
+        </ion-item>
+      </div>
+
+      <div *ngIf="role=='client'">
+        <ion-label color="light" text-left>Département</ion-label>
+        <ion-item>
+          <ion-select [(ngModel)]="profile.departement">
+            <ion-option *ngFor="let dep of deps; let  i = index" [value]="dep">{{i+1}} - {{dep}}</ion-option>
+          </ion-select>
+        </ion-item>
+      </div>
+
+    </ion-slide>
+    <ion-slide padding class="registerform">
+      <div *ngIf="role=='pro'">
+        <img src="./assets/imgs/lifechat-logo.png" class="logo" />
+
+        <div class="fileuploader">
+          <ion-label color="light" text-left>Justificatif d'identité</ion-label>
+          <ion-item no-lines>
+            <ion-input (click)="onInputClick('id')" placeholder="Upload d'image" disabled [ngClass]="{'active':file.id}"></ion-input>
+            <div item-end>
+              <ion-icon name="help" color="light" (click)="openPopup('justificatif')"></ion-icon>
+            </div>
+          </ion-item>
+        </div>
+
+        <div>
+          <ion-label color="light" text-left>Adresse E-mail</ion-label>
+          <ion-item>
+            <ion-input [(ngModel)]="profile.email" placeholder="Entrez votre email"></ion-input>
+          </ion-item>
+        </div>
+
+        <div>
+          <ion-label color="light" text-left>Numéro de téléphone</ion-label>
+          <ion-item>
+            <ion-input [(ngModel)]="profile.phone" placeholder="Entrez votre numéro de téléphone"></ion-input>
+          </ion-item>
+        </div>
+
+        <!--  <ion-item no-lines class="condition">
+          <ion-label color="light">J’ai lu et j’accepte les
+            <span ion-text color="secondary" (click)="openCGU();$event.preventDefault()">conditions générales d’utilisation</span>.</ion-label>
+          <ion-checkbox [(ngModel)]="conditions" ></ion-checkbox>
+        </ion-item>
+        <button ion-button full color="secondary" (click)="doRegister()">Vérification du compte</button> -->
+
+      </div>
+
+      <div *ngIf="role=='client'">
+        <img src="./assets/imgs/lifechat-logo.png" class="logo" />
+
+        <div>
+          <ion-label color="light" text-left>Ma philosophie</ion-label>
+          <ion-item>
+            <ion-input [(ngModel)]="profile.philo" placeholder="Votre philosophie dans la vie"></ion-input>
+          </ion-item>
+        </div>
+
+
+      </div>
+
+    </ion-slide>
+
+    <ion-slide class="registerform">
+      <div *ngIf="role=='pro'">
+        <img src="./assets/imgs/lifechat-logo.png" class="logo" />
+
+        <div>
+          <ion-row text-center>
+            <ion-col no-padding *ngFor="let sub of subjects" (click)="selectThisSubject(sub)">
+              <img *ngIf="!isSubjectSelected(sub)" class="subject-img" [src]="'./assets/imgs/sujets/'+sub+'/'+sub+'_bleu.png'" />
+              <img *ngIf="isSubjectSelected(sub)" class="subject-img" [src]="'./assets/imgs/sujets/'+sub+'/'+sub+'_vert.png'" />
+
+              <p *ngIf="!isSubjectSelected(sub)" class="sujet-name">{{ sub }}</p>
+              <p *ngIf="isSubjectSelected(sub)" class="sujet-name vert">{{ sub }}</p>
+            </ion-col>
+          </ion-row>
+        </div>
+
+        <ion-item no-lines class="condition">
+          <ion-label color="light">J’ai lu et j’accepte les
+            <span ion-text color="secondary" (click)="openCGU();$event.preventDefault()">conditions générales
+              d’utilisation</span>.</ion-label>
+          <ion-checkbox [(ngModel)]="conditions"></ion-checkbox>
+        </ion-item>
+        <button ion-button full color="secondary" (click)="doRegister()">Vérification du compte</button>
+      </div>
+
+      <div *ngIf="role=='client'">
+        <h4 ion-text color="light">Dans quelle humeur êtes-vous?</h4>
+        <ion-grid>
+          <ion-row class="humeur">
+            <ion-col col-4 *ngFor="let humeur of humeurs" padding (click)="profile.humeur = humeur.name">
+              <img [src]="'./assets/imgs/humeur/'+humeur.img+'.png'" />
+              <p ion-text [color]="(profile.humeur==humeur.name)?'secondary':'light'">{{humeur.name}}</p>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+        <ion-item no-lines class="condition">
+          <ion-label color="light">J’ai lu et j’accepte les
+            <span ion-text color="secondary" (click)="openCGU();$event.preventDefault()">conditions générales
+              d’utilisation</span>.</ion-label>
+          <ion-checkbox [(ngModel)]="conditions"></ion-checkbox>
+        </ion-item>
+        <button ion-button full color="secondary" (click)="doRegister()">Valider</button>
+      </div>
+
+    </ion-slide>
+  </ion-slides>
+</ion-content>

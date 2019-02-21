@@ -1,0 +1,108 @@
+<ion-content fullscreen>
+
+  <div *ngIf="userP.user?.role == 'pro'" class="mini-header bg" style="height: 40px;">
+    <span style="margin-top: 8px !important; position: fixed;">Mes conversations actives</span>
+    <ion-toggle class="pro-toggle" color="secondary" [(ngModel)]="online" (ngModelChange)="isAvailable()"></ion-toggle>
+  </div>
+
+
+  <div *ngIf="userP.user?.role == 'client'" class="mini-header bg">
+    <span>Nouveau Sujet</span>
+  </div>
+
+  <ion-row text-center *ngIf="userP.user?.role == 'client'">
+    <ion-col no-padding *ngFor="let sub of subjects" (click)="openChat(sub, null)">
+      <img class="subject-img" [src]="'./assets/imgs/sujets/'+sub+'/'+sub+'_bleu.png'" />
+      <p class="sujet-name">{{ sub }}</p>
+    </ion-col>
+  </ion-row>
+
+  <div *ngIf="userP.user?.role == 'client'" class="mini-header bg">
+    <span>Conversations</span>
+  </div>
+
+
+  <ion-list>
+    <ion-item-sliding *ngFor="let conv of Convs(true)">
+      <ion-item class="item-msg" (press)="deleteConv(conv.id)" (tap)="openChat(null, conv.id, conv)" [ngClass]="{'closed' : conv.data.closed}">
+        <ion-avatar item-start *ngIf="conv.ref" (tap)="openProfile(conv.id)">
+          <img *ngIf="userP.user?.role == 'client'" [src]="'./assets/imgs/sujets/'+conv.data.subject+'/'+ conv.data.subject +'_vert.png'">
+          <img *ngIf="userP.user?.role == 'pro'" [src]="'./assets/imgs/humeur/'+ conv.ref.profile.humeur +'.png'">
+        </ion-avatar>
+        <ion-row>
+          <ion-col col-10>
+            <div *ngIf="conv.ref">
+              <h2 *ngIf="userP.user?.role == 'client'">{{conv.ref.profile.nom}}</h2>
+              <h2 *ngIf="userP.user?.role == 'pro'">{{conv.ref.profile.pseudo}}</h2>
+            </div>
+            <p>{{conv.data.messages[conv.data.messages.length-1].content}}</p>
+          </ion-col>
+          <ion-col col-2 *ngIf="(!conv.data.closed) && (conv.data.messages.length - conv.data[userP.user?.role+'-seen'] > 0) ">
+            <div class="seen">{{conv.data.messages.length - conv.data[userP.user?.role+'-seen']}}</div>
+          </ion-col>
+        </ion-row>
+
+
+      </ion-item>
+      <ion-item-options side="right" *ngIf="!conv.data.closed">
+        <button *ngIf="userP.user?.role == 'client'" class="chat-sliding-btn" ion-button color="secondary" (click)="closeConv(conv)">
+          Clôturer
+          <br>chat
+        </button>
+        <!-- <button *ngIf="userP.user?.role == 'client'" class="chat-sliding-btn" ion-button color="danger" (click)="ChangePro(conv.id)">
+          Changer
+          <br>conseiller
+        </button> -->
+        <button *ngIf="userP.user?.role != 'client'" class="chat-sliding-btn" ion-button color="reverse" (click)="showProfile(conv.data.client)">
+          Voir le
+          <br>profil
+        </button>
+      </ion-item-options>
+
+<!-- Reclamation-->
+
+      <ion-item-options side="left">
+        <button ion-button color="danger" (click)="Reclamation(conv)">Signaler</button>
+      </ion-item-options>
+
+    </ion-item-sliding>
+ 
+    <ion-item-sliding *ngFor="let conv of Convs(false)">
+      <ion-item class="item-msg"  (press)="deleteConv(conv.id)" (tap)="openChat(null, conv.id, conv)" [ngClass]="{'closed' : conv.data.closed}">
+        <ion-avatar item-start *ngIf="conv.ref">
+          <img *ngIf="userP.user?.role == 'client'" [src]="'./assets/imgs/sujets/'+conv.data.subject+'/'+ conv.data.subject +'_vert.png'">
+          <img *ngIf="userP.user?.role == 'pro'" [src]="'./assets/imgs/humeur/'+ conv.ref.profile.humeur +'.png'">
+        </ion-avatar>
+        <ion-row>
+          <ion-col col-10>
+            <div *ngIf="conv.ref">
+              <h2 *ngIf="userP.user?.role == 'client'">{{conv.ref.profile.nom}}</h2>
+              <h2 *ngIf="userP.user?.role == 'pro'">{{conv.ref.profile.pseudo}}</h2>
+            </div>
+            <p>{{conv.data.messages[conv.data.messages.length-1].content}}</p>
+          </ion-col>
+          <ion-col col-2 *ngIf="(!conv.data.closed) && (conv.data.messages.length - conv.data[userP.user?.role+'-seen'] > 0) ">
+            <div class="seen">{{conv.data.messages.length - conv.data[userP.user?.role+'-seen']}}</div>
+          </ion-col>
+        </ion-row>
+
+
+      </ion-item>
+      <ion-item-options side="right" *ngIf="!conv.data.closed">
+        <button *ngIf="userP.user?.role == 'client'" class="chat-sliding-btn" ion-button color="secondary" (click)="closeConv(conv)">
+          Clôturer
+          <br>chat
+        </button>
+        <button *ngIf="userP.user?.role == 'client'" class="chat-sliding-btn" ion-button color="danger" (click)="ChangePro(conv.id)">
+          Changer
+          <br>conseiller
+        </button>
+        <button *ngIf="userP.user?.role != 'client'" class="chat-sliding-btn" ion-button color="reverse" (click)="showProfile(conv.data.client)">
+          Voir le
+          <br>profil
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+</ion-content>

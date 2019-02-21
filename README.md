@@ -1,2 +1,8 @@
-# new-life-chat
-dealer
+
+## LifeChat
+
+   
+#### Run on browser
+
+    $> npm install
+    $> ionic serve

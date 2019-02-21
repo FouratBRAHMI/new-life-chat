@@ -1,0 +1,143 @@
+> ionic-app-scripts build --target cordova --platform android
+[18:34:35]  ionic-app-scripts 3.2.1 
+[18:34:35]  build dev started ... 
+[18:34:35]  clean started ... 
+[18:34:35]  clean finished in 16 ms 
+[18:34:35]  copy started ... 
+[18:34:35]  deeplinks started ... 
+[18:34:35]  deeplinks finished in 145 ms 
+[18:34:35]  transpile started ... 
+[18:34:40]  transpile finished in 4.98 s 
+[18:34:40]  preprocess started ... 
+[18:34:40]  preprocess finished in 1 ms 
+[18:34:40]  webpack started ... 
+[18:34:40]  copy finished in 5.37 s 
+[18:34:45]  webpack finished in 5.08 s 
+[18:34:45]  sass started ... 
+[18:34:47]  sass finished in 1.42 s 
+[18:34:47]  postprocess started ... 
+[18:34:47]  postprocess finished in 9 ms 
+[18:34:47]  lint started ... 
+[18:34:47]  build dev finished in 11.90 s 
+[33m[18:34:51]  tslint: C:/Users/No Exist/Desktop/newLifechat/src/providers/user/user.ts, line: 5 [39m
+            'firebase' is declared but its value is never read. 
+
+[2m       L4:  [22mimport 'rxjs/add/operator/mergeMap';
+[2m       L5:  [22mimport * as [41mf[49m[41mi[49m[41mr[49m[41me[49m[41mb[49m[41ma[49m[41ms[49m[41me[49m from 'firebase/app';
+[2m       L6:  [22mimport 'firebase/storage';
+
+[33m[18:34:51]  tslint: C:/Users/No Exist/Desktop/newLifechat/src/pages/checkout/checkout.ts, line: 2 [39m
+            'NavController' is declared but its value is never read. 
+
+[2m       L1:  [22mimport { Component } from '@angular/core';
+[2m       L2:  [22mimport { IonicPage, [41mN[49m[41ma[49m[41mv[49m[41mC[49m[41mo[49m[41mn[49m[41mt[49m[41mr[49m[41mo[49m[41ml[49m[41ml[49m[41me[49m[41mr[49m, NavParams, ViewController } from 'ionic-angular';
+[2m       L3:  [22mimport { Stripe } from '@ionic-native/stripe';
+
+[33m[18:34:51]  tslint: C:/Users/No Exist/Desktop/newLifechat/src/pages/tabs/chat/chat.ts, line: 36 [39m
+            Property 'auth' is declared but its value is never read. 
+
+[2m      L35:  [22mprivate emailComposer:EmailComposer,
+[33m[18:34:51]  tslint: C:/Users/No Exist/Desktop/newLifechat/src/pages/tabs/community/community.ts, line: 41 [39m
+[2m      L36:  [22mprivate afAuth: AngularFireAuth, private [41ma[49m[41mu[49m[41mt[49m[41mh[49m: AuthProvider
+[2m      L37:  [22m) {
+
+            'getdata' is declared but its value is never read. 
+
+[2m      L40:  [22mloadSubjets(subject) {
+[33m[18:34:51]  tslint: C:/Users/No Exist/Desktop/newLifechat/src/pages/tabs/community/community.ts, line: 45 [39m
+[2m      L41:  [22m  let [41mg[49m[41me[49m[41mt[49m[41md[49m[41ma[49m[41mt[49m[41ma[49m = this.chatService.getCommunitySubjects(subject).subscribe(data => {
+[2m      L42:  [22m    this.subjectsMessages = data;
+
+            'getuser' is declared but its value is never read. 
+
+[2m      L44:  [22mthis.subjectsMessages.forEach(item => {
+[33m[18:34:51]  tslint: C:/Users/No Exist/Desktop/newLifechat/src/pages/tabs/community/community.ts, line: 64 [39m
+[2m      L45:  [22m  let [41mg[49m[41me[49m[41mt[49m[41mu[49m[41ms[49m[41me[49m[41mr[49m = this.userService.getUserById(item.data.user).subscribe(user => {
+[2m      L46:  [22m    item.data.profile = user;
+
+            'modal' is declared but its value is never read. 
+
+[2m      L64:  [22m    let [41mm[49m[41mo[49m[41md[49m[41ma[49m[41ml[49m = this.modalCtrl.create('CreateChatPage', {subject: this.selectedSubject}).present();
+
+            'NavController' is declared but its value is never read. 
+[33m[18:34:51]  tslint: ...No Exist/Desktop/newLifechat/src/pages/tabs/community/create-chat/create-chat.ts, line: 2 [39m
+[33m[18:34:51]  tslint: ...top/newLifechat/src/pages/tabs/community/community-chat/community-chat.module.ts, line: 4 [39m
+
+[2m       L1:  [22mimport { Component } from '@angular/core';
+[2m       L2:  [22mimport { IonicPage, [41mN[49m[41ma[49m[41mv[49m[41mC[49m[41mo[49m[41mn[49m[41mt[49m[41mr[49m[41mo[49m[41ml[49m[41ml[49m[41me[49m[41mr[49m, NavParams, ViewController } from 'ionic-angular';
+[2m       L3:  [22mimport { ChatProvider } from '../../../../providers/chat/chat';
+
+            All imports on this line are unused. 
+
+[2m       L3:  [22mimport { CommunityChatPage } from './community-chat';
+[33m[18:34:51]  tslint: C:/Users/No Exist/Desktop/newLifechat/src/pages/tabs/profil/offers/offers.ts, line: 17 [39m
+[33m[18:34:51]  tslint: C:/Users/No Exist/Desktop/newLifechat/src/pages/user-profile/user-profile.ts, line: 2 [39m
+[2m       L4:  [22m[41mi[49m[41mm[49m[41mp[49m[41mo[49m[41mr[49m[41mt[49m { AutoSizeDirective } from '../../../../directives/auto-size/auto-size';
+
+            Property 'user' is declared but its value is never read. 
+
+[2m      L16:  [22mpublic navParams: NavParams,
+[2m      L17:  [22mprivate [41mu[49m[41ms[49m[41me[49m[41mr[49m: UserProvider,
+[2m      L18:  [22mprivate modalCtrl: ModalController,
+
+            'AlertController' is declared but its value is never read. 
+
+[2m       L1:  [22mimport { Component } from '@angular/core';
+[33m[18:34:51]  tslint: C:/Users/No Exist/Desktop/newLifechat/src/pages/user-profile/user-profile.ts, line: 3 [39m
+[2m       L2:  [22mimport { IonicPage, [41mA[49m[41ml[49m[41me[49m[41mr[49m[41mt[49m[41mC[49m[41mo[49m[41mn[49m[41mt[49m[41mr[49m[41mo[49m[41ml[49m[41ml[49m[41me[49m[41mr[49m, ModalController, NavParams, ViewController } from 'ionic-angular';
+[2m       L3:  [22mimport { AuthProvider } from '../../providers/auth/auth';
+
+            All imports on this line are unused. 
+
+[2m       L2:  [22mimport { IonicPage, AlertController, ModalController, NavParams, ViewController } from 'ionic-angular';
+[2m       L3:  [22m[41mi[49m[41mm[49m[41mp[49m[41mo[49m[41mr[49m[41mt[49m { AuthProvider } from '../../providers/auth/auth';
+[2m       L4:  [22mimport { UserProvider } from '../../providers/user/user';
+
+[33m[18:34:51]  tslint: C:/Users/No Exist/Desktop/newLifechat/src/pages/user-profile/user-profile.ts, line: 5 [39m
+[33m[18:34:51]  tslint: C:/Users/No Exist/Desktop/newLifechat/src/pages/user-profile/user-profile.ts, line: 6 [39m
+            All imports on this line are unused. 
+
+[2m       L4:  [22mimport { UserProvider } from '../../providers/user/user';
+[2m       L5:  [22m[41mi[49m[41mm[49m[41mp[49m[41mo[49m[41mr[49m[41mt[49m { InAppBrowser } from '@ionic-native/in-app-browser';
+[2m       L6:  [22mimport { ChatProvider } from '../../providers/chat/chat';
+
+            All imports on this line are unused. 
+
+[2m       L5:  [22mimport { InAppBrowser } from '@ionic-native/in-app-browser';
+[2m       L6:  [22m[41mi[49m[41mm[49m[41mp[49m[41mo[49m[41mr[49m[41mt[49m { ChatProvider } from '../../providers/chat/chat';
+
+[18:34:51]  lint finished in 4.45 s 
+> cordova build android
+Android Studio project detected
+ANDROID_HOME=C:\Users\No Exist\AppData\Local\Android\sdk
+JAVA_HOME=C:\Program Files\Java\jdk1.8.0_201
+studio
+Subproject Path: CordovaLib
+Subproject Path: app
+publishNonDefault is deprecated and has no effect anymore. All variants are now published.
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+A problem occurred configuring project ':CordovaLib'.
+> No toolchains found in the NDK toolchains folder for ABI with prefix: mips64el-linux-android
+
+* Try:
+Run with --stacktrace option to get the stack trace. Run with --info or --debug option to get more log output.
+
+* Get more help at https://help.gradle.org
+
+BUILD FAILED in 2s
+cmd: Command failed with exit code 1 Error output:
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+A problem occurred configuring project ':CordovaLib'.
+> No toolchains found in the NDK toolchains folder for ABI with prefix: mips64el-linux-android
+
+* Try:
+Run with --stacktrace option to get the stack trace. Run with --info or --debug option to get more log output.
+
+* Get more help at https://help.gradle.org
+
+BUILD FAILED in 2s

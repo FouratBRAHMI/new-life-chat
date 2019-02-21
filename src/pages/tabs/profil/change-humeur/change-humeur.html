@@ -1,0 +1,31 @@
+<!--
+  Generated template for the ChangeHumeurPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Update humeur</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding class="bg">
+  <ion-grid *ngIf="me">
+    <ion-row>
+      <ion-col col-4 text-center items-center *ngFor="let humeur of humeurs" padding (click)="me.profile.humeur = humeur.name">
+        <img [src]="'./assets/imgs/humeur/'+humeur.img+'.png'" />
+        <p ion-text [color]="(me.profile.humeur==humeur.name)?'secondary':'light'">{{humeur.name}}</p>
+      </ion-col>
+    </ion-row> 
+  </ion-grid>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar class="footer-toolbar">
+    <button color="primary" (click)="doUpdate()" secondary ion-button block>Enregistrer</button>
+  </ion-toolbar>
+</ion-footer>

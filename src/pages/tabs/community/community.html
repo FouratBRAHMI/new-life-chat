@@ -1,0 +1,31 @@
+<ion-content fullscreen>
+  <div class="mini-header bg"><span>communauté – Choisir thème</span></div>
+
+  <ion-row text-center>
+    <ion-col no-padding *ngFor="let sub of subjects" (click)="selectThisSubject(sub)">
+      <img *ngIf="selectedSubject != sub" class="subject-img" [src]="'./assets/imgs/sujets/'+sub+'/'+sub+'_bleu.png'" /> 
+      <img *ngIf="selectedSubject == sub" class="subject-img" [src]="'./assets/imgs/sujets/'+sub+'/'+sub+'_vert.png'" /> 
+      
+      <p *ngIf="selectedSubject != sub" class="sujet-name">{{ sub }}</p>
+      <p *ngIf="selectedSubject == sub" class="sujet-name vert">{{ sub }}</p>
+    </ion-col>
+  </ion-row>
+
+  <div class="mini-header bg" *ngIf="subjectsMessages.length > 0"><span>Participer à une conversation</span></div>
+  <div class="mini-header bg" *ngIf="subjectsMessages.length == 0"><span>Aucun sujet pour ce thème</span></div>
+
+  <ion-list>
+    <ion-item *ngFor="let item of subjectsMessages">
+      <h2  (click)="openChat(item)">{{ item.data.name }}</h2>
+      <p *ngIf="item.data.profile" (click)="openChat(item)">Sujet lancé par {{ item.data.profile.profile.pseudo }}</p>
+      <!-- <ion-note item-end>1 message</ion-note> -->
+      <button *ngIf="me.uid != item.data.user && !isMember(item)" (click)="joinConversation(item.id)" ion-button item-end color="secondary" class="commynity-action-btn">Rejoindre</button>
+      <button *ngIf="me.uid != item.data.user && isMember(item)" (click)="leaveConversation(item.id); $event.stoppropagation()" ion-button item-end color="danger" class="commynity-action-btn">Quitter</button>
+      <button *ngIf="me.uid == item.data.user" (click)="deleteConversation(item.id)" ion-button item-end color="danger" class="commynity-action-btn">Supprimer</button>
+    </ion-item>
+  </ion-list>
+
+  <ion-fab right bottom>
+    <button ion-fab mini color="secondary" (click)="newSebject()"><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
+</ion-content>

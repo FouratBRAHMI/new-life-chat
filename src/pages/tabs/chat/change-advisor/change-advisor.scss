@@ -1,0 +1,27 @@
+page-change-advisor {
+
+    ul {
+        padding: 0px;
+
+        &.rating li {
+            padding: 5px 5px !important;
+            background: none;
+            color: #4F5C82;
+
+            ion-icon {
+            font-size: 20px;
+            }
+        }
+    }
+    
+    .solved {
+        background-color: #4F5C82;
+        color: white;
+        width: 50px;
+    }
+    .not-solved {
+        background-color: #BFBFBF;
+        color: white;
+        width: 50px;
+    }
+}

@@ -1,0 +1,21 @@
+page-user-profile {
+    .avatar {
+        border: 8px solid map-get($colors, secondary);
+        border-radius: 50%;
+        width: 150px;
+        height: 150px;
+        ;
+        margin: auto;
+        background-size: 100%;
+        box-shadow: 0px 0px 15px 5px #afafaf;
+        background-image: url('/assets/imgs/avatar.png');
+    }
+    h3 {
+        margin-top: 1rem;
+    }
+    .details{
+        font-weight: normal !important;
+        font-size: 18px !important;
+    }
+    
+}

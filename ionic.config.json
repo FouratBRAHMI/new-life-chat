@@ -1,0 +1,7 @@
+{
+  "name": "lifechat",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

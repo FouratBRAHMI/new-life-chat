@@ -1,0 +1,36 @@
+page-chat {
+    .sujet {
+        -webkit-box-flex: 0;
+        -webkit-flex: 0 0 14.2857%;
+        -ms-flex: 0 0 14.2857%;
+        flex: 0 0 14.2857%;
+        width: 14.2857%;
+        max-width: 14.2857%;
+    }
+    .seen {
+        height: 20px;
+        width: 20px;
+        background-color: red;
+        border-radius: 50%;
+        text-align: center;
+        color: #fff;
+        float: right;
+        font-size: 1rem;
+        line-height: 2;
+    }
+    .closed{
+        background-color: #c7c7c7
+    }
+    .chat-sliding-btn {
+        font-size: small;
+    }
+
+    .pro-toggle {
+        float: right;
+    }
+
+    .item-msg p {
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}

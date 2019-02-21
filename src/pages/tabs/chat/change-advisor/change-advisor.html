@@ -1,0 +1,32 @@
+<ion-content class="modal-popup large">
+
+  <ion-grid no-padding>
+    <ion-row justify-content-center>
+      <ion-col text-center>
+        <p style="margin-top: 18px;margin-left: 54px;" text-center>Problème résolu ?</p>
+      </ion-col>
+      <ion-col col-auto>
+        <button color="secondary" ion-button icon-only clear (click)="viewCtrl.dismiss(-1)">
+          <ion-icon name="md-close"></ion-icon>
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <div text-center>
+    <button ion-button small (click)="solved=true;" [ngClass]="{'solved':solved, 'not-solved':!solved}">OUI</button>
+    <button ion-button small (click)="solved=false;" [ngClass]="{'solved':!solved, 'not-solved':solved}">NON</button>
+  </div>
+
+  <div text-center>
+    <p>Notez votre conseiller</p>
+    <rating [(ngModel)]="rate" readOnly="false" max="5" emptyStarIconName="ios-radio-button-off" halfStarIconName="ios-radio-button-on"
+      starIconName="ios-radio-button-on" nullable="false" (ngModelChange)="onModelChange($event)">
+    </rating>
+
+    <button color="secondary" ion-button (click)="viewCtrl.dismiss({solved:solved, rate:rate})" style="min-width:100px;margin-top:15px;">
+      Valider
+    </button>
+  </div>
+
+</ion-content>

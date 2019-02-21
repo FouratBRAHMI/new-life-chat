@@ -1,0 +1,51 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Nos offres</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-list radio-group [(ngModel)]="offer"> 
+    <ion-list-header>
+      Profitez de nos offres
+    </ion-list-header>
+  
+    <ion-item>
+      <ion-label class="offer-label">
+        <span style="font-size: xx-large;">10</span>
+        <ion-icon style="font-size: xx-large;margin: 0px 5px;" name="ios-mail"></ion-icon>
+        <span>7,99 €</span>
+      </ion-label>
+      <ion-radio checked="true" value="10"></ion-radio>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label class="offer-label">
+        <span style="font-size: xx-large;">20</span>
+        <ion-icon style="font-size: xx-large;margin: 0px 5px;" name="ios-mail"></ion-icon>
+        <span>14,99 €</span>
+      </ion-label>
+      <ion-radio value="20"></ion-radio>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label class="offer-label">
+        <span style="font-size: xx-large;">50</span>
+        <ion-icon style="font-size: xx-large;margin: 0px 5px;" name="ios-mail"></ion-icon>
+        <span>22,99 €</span>
+      </ion-label>
+      <ion-radio value="50"></ion-radio>
+    </ion-item>
+  </ion-list>
+
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar class="footer-toolbar">
+    <button color="primary" (click)="buyOffer()" secondary ion-button block>Valider</button>
+  </ion-toolbar>
+</ion-footer>

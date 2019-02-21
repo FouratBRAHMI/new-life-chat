@@ -1,0 +1,22 @@
+<ion-content class="bg" text-center>
+  <img src="./assets/imgs/lifechat-logo.png" class="logo" />
+
+  <form #form="ngForm" (ngSubmit)="doLogin(form)" class="loginform">
+    <ion-item>
+      <ion-label floating>Nom d'utilisateur</ion-label>
+      <ion-input type="text" required [(ngModel)]="user.email" name="email" ngControl="email"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Mot de passe</ion-label>
+      <ion-input type="password" required [(ngModel)]="user.password" name="password" ngControl="password"></ion-input>
+    </ion-item>
+    <div class="logbutton">
+      <button ion-button type="submit" color="reverse">Connexion</button>
+      <div class="forget" (click)="forgetPass()">
+        <ion-icon name="help" color="light"></ion-icon>
+      </div>
+      <button ion-button type="button" color="secondary" [navPush]="'RegisterPage'">Inscription</button>
+    </div>
+  </form>
+
+</ion-content>

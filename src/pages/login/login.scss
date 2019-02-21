@@ -1,0 +1,41 @@
+page-login {
+    .loginform{
+        ion-item{
+            background-color: transparent;
+            padding: 0px 70px;
+        }
+        ion-label{
+            color: #c1b7b7 !important;
+        }
+    }
+    .logbutton{
+       margin-top: 60px;
+       position: relative;
+        button{
+            width: 50%;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 30px;
+        }
+    }
+    .logo{
+        width:150px;
+        height: auto;
+        margin: 60px;
+    }
+
+    .forget{
+        width: 30px;
+        height: 30px;
+        text-align: center;
+        background-color: grey;
+        border-radius: 50%;
+        position: absolute;
+        top: 5%;
+        right: 15%;
+        ion-icon{
+            font-size: 30px;
+        }
+    }
+}

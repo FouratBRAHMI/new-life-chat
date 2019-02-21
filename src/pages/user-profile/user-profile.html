@@ -1,0 +1,45 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-buttons left>
+      <button left ion-button icon-only (click)="close()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+
+    <ion-title>
+      Profil
+    </ion-title>
+
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+  <div *ngIf="p?.role == 'client'" text-center class="avatar" [ngStyle]="{'background-image':'url(./assets/imgs/humeur/'+profile?.humeur+'.png)'}">
+  </div>
+  <div *ngIf="p?.role == 'pro'" text-center class="avatar">
+  </div>
+  <h1  *ngIf="p?.role != 'pro'" text-center ion-text color="reverse">{{profile?.pseudo}}</h1>
+  <h1  *ngIf="p?.role == 'pro'" text-center ion-text color="reverse">{{profile?.nom}}</h1>
+
+  <div *ngIf="p?.role == 'pro'" text-left style="padding: 5px 10px;">
+    <h3>Notation</h3>
+    <p *ngIf="rates">{{calculateRate(rates)}}/5</p>
+  </div>
+
+  <div text-left  style="padding: 5px 10px;">
+    <h3>Ma philosophie</h3>
+    <p>« {{ profile?.philo }} »</p>
+  </div>
+
+  <div text-left  style="padding: 5px 10px;">
+      <h3 *ngIf="profile?.sexe">Sexe: <span class="details">{{profile?.sexe }}</span></h3>
+    <h3 *ngIf="profile?.sexe">Date de naissance: <span class="details">{{profile?.birthday | date:'dd/MM/yyyy' }}</span></h3>
+    <h3 *ngIf="profile?.profession">Profession: <span class="details">{{profile?.profession}}</span></h3>
+    <h3 *ngIf="profile?.departement">Departement: <span class="details">{{profile?.departement}}</span></h3>
+  </div>
+
+</ion-content>
